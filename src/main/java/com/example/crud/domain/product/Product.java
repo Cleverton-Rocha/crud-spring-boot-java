@@ -1,15 +1,7 @@
 package com.example.crud.domain.product;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Table(name = "product")
 @Entity(name = "product")
@@ -19,19 +11,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Product {
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
-  private String name;
+    private String name;
 
-  private Integer price_in_cents;
+    private Integer price_in_cents;
 
-  private Boolean active;
+    private Boolean active;
 
-  public Product(RequestProduct requestProduct) {
-    this.name = requestProduct.name();
-    this.price_in_cents = requestProduct.price_in_cents();
-    this.active = true;
-  }
+    public Product(RequestProduct requestProduct) {
+        this.name = requestProduct.name();
+        this.price_in_cents = requestProduct.price_in_cents();
+        this.active = (Boolean) true;
+    }
 }
